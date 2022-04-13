@@ -17,7 +17,7 @@ class BookingsList(ListAPIView):
 	def get_queryset(self):
 		return Booking.objects.filter(user = self.request.user, date__gte=datetime.today())
 
-
+#comment
 class BookingDetails(RetrieveAPIView):
 	queryset = Booking.objects.all()
 	serializer_class = BookingDetailsSerializer
