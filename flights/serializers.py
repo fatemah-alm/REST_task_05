@@ -1,3 +1,5 @@
+from asyncore import file_dispatcher
+from dataclasses import fields
 from rest_framework import serializers
 from django.contrib.auth.models import User
 
@@ -21,11 +23,16 @@ class BookingDetailsSerializer(serializers.ModelSerializer):
 		model = Booking
 		fields = ['flight', 'date', 'passengers', 'id']
 
-
+class UpdateBookingAdminSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Booking
+        fields = ['passengers', 'date']
+        
+  
 class UpdateBookingSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = Booking
-		fields = ['date', 'passengers']
+		fields = ['passengers']
 
 
 class RegisterSerializer(serializers.ModelSerializer):
